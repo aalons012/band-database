@@ -2,6 +2,7 @@
  * Created by Andy Alonso
  * on 7/22/25
  */
+package edu.alonso.banddatabase
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

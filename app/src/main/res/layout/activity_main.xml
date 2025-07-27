@@ -11,5 +11,6 @@
     app:layout_constraintLeft_toLeftOf="parent"
     app:layout_constraintRight_toRightOf="parent"
     app:layout_constraintTop_toTopOf="parent"
+    android:fitsSystemWindows="true"
     app:navGraph="@navigation/nav_graph"
     tools:layout="@layout/fragment_detail" />

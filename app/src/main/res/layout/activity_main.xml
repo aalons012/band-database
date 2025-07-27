@@ -1,4 +1,12 @@
-<androidx.fragment.app.FragmentContainerView
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
+
+    <androidx.fragment.app.FragmentContainerView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,4 +21,6 @@
     app:layout_constraintTop_toTopOf="parent"
     android:fitsSystemWindows="true"
     app:navGraph="@navigation/nav_graph"
-    tools:layout="@layout/fragment_detail" />
+    tools:layout="@layout/fragment_detail"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

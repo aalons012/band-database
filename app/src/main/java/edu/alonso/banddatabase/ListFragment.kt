@@ -34,10 +34,17 @@ class ListFragment : Fragment() {
 
             // Display band's name on button
             button.text = band.name
+            button.tag = band.id
 
             // Navigate to detail screen when clicked
             button.setOnClickListener { buttonView: View ->
-                Navigation.findNavController(buttonView).navigate(R.id.show_item_detail)
+                // Create fragment arguments containing the selected band ID
+                val selectedBandId = buttonView.tag as Int
+                val args = Bundle()
+                args.putInt(ARG_BAND_ID, selectedBandId)
+
+                // Send band ID to DetailFragment
+                Navigation.findNavController(buttonView).navigate(R.id.show_item_detail, args)
             }
 
             // Add button to the LinearLayout

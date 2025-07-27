@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.RecyclerView
 
 class ListFragment : Fragment() {
@@ -36,6 +37,10 @@ class ListFragment : Fragment() {
         val recyclerView = rootView.findViewById<RecyclerView>(R.id.band_list)
         val bands = Repository.getInstance(requireContext()).bandList
         recyclerView.adapter = BandAdapter(bands, onClickListener)
+
+        // A Divider line between list items
+        val divider = DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
+        recyclerView.addItemDecoration(divider)
 
         return rootView
     }

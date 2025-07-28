@@ -8,7 +8,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/band_list"
-        android:name="com.zybooks.thebanddatabase.ListFragment"
+        android:name="edu.alonso.banddatabase.ListFragment"
         android:layout_width="250dp"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
@@ -17,7 +17,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:context="com.zybooks.thebanddatabase.MainActivity"
+        tools:context="edu.alonso.banddatabase.MainActivity"
         tools:listitem="@layout/list_item_band" />
 
     <androidx.fragment.app.FragmentContainerView
@@ -26,12 +26,11 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
         app:defaultNavHost="false"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/band_list"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:navGraph="@navigation/subnav_graph" />
+        app:navGraph="@navigation/sub_nav_graph" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

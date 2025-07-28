@@ -29,8 +29,14 @@ class ListFragment : Fragment() {
             val args = Bundle()
             args.putInt(ARG_BAND_ID, selectedBandId)
 
-            // Replace list with details
-            Navigation.findNavController(itemView).navigate(R.id.show_item_detail, args)
+            val detailFragContainer = rootView.findViewById<View>(R.id.detail_frag_container)
+            if (detailFragContainer == null) {
+                // Replace list with details
+                Navigation.findNavController(itemView).navigate(R.id.show_item_detail, args)
+            } else {
+                // Show details on the right
+                Navigation.findNavController(detailFragContainer).navigate(R.id.fragment_detail, args)
+            }
         }
 
         // Send bands to RecyclerView
@@ -38,13 +44,11 @@ class ListFragment : Fragment() {
         val bands = Repository.getInstance(requireContext()).bandList
         recyclerView.adapter = BandAdapter(bands, onClickListener)
 
-        // A Divider line between list items
         val divider = DividerItemDecoration(recyclerView.context, DividerItemDecoration.VERTICAL)
         recyclerView.addItemDecoration(divider)
 
         return rootView
     }
-
     private class BandAdapter(private val bandList: List<Band>,
                               private val onClickListener: View.OnClickListener) :
         RecyclerView.Adapter<BandHolder>() {
@@ -53,27 +57,20 @@ class ListFragment : Fragment() {
             val layoutInflater = LayoutInflater.from(parent.context)
             return BandHolder(layoutInflater, parent)
         }
-
         override fun onBindViewHolder(holder: BandHolder, position: Int) {
             val band = bandList[position]
             holder.bind(band)
             holder.itemView.tag = band.id
             holder.itemView.setOnClickListener(onClickListener)
         }
-
         override fun getItemCount(): Int {
             return bandList.size
         }
     }
-
     private class BandHolder(inflater: LayoutInflater, parent: ViewGroup?) :
         RecyclerView.ViewHolder(inflater.inflate(R.layout.list_item_band, parent, false)) {
 
-        private val nameTextView: TextView
-
-        init {
-            nameTextView = itemView.findViewById(R.id.band_name)
-        }
+        private val nameTextView: TextView = itemView.findViewById(R.id.band_name)
 
         fun bind(band: Band) {
             nameTextView.text = band.name
